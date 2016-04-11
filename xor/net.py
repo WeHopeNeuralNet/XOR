@@ -26,20 +26,6 @@ class NeuralNet:
             iteration_count += 1
     
     def forward(self, x_data):
-#         self.first_layer = x_data
-#          
-#         for i in range(self.shape[1]):
-#             unit_sum = 0.0
-#             for j in range(self.shape[0]):
-#                 unit_sum += self.first_layer[j] * self.weights[1][i]
-#          
-#         for i in range(self.shape[2]):
-#             self.weights[i].dot(x_data)
-#          
-#         for i in range(self.shape[3]):
-#             unit_sum = 0.0
-#             for j in range(self.shape[0]):
-#                 unit_sum += self.first_layer[j] * self.weights[1][i]
         outputs = {}
         for layer, unit_weights in six.iteritems(self.weights):
             output = np.array([], dtype=np.float32).reshape(-1, 1)
@@ -50,8 +36,8 @@ class NeuralNet:
                 activated_unit_sum = self.sigmoid(unit_sum)
                 output = np.append(output, activated_unit_sum)
             outputs[layer] = output
-        
-        
+        return outputs
+    
     def predict(self, layer):
         self.weights[layer].dot()
     
